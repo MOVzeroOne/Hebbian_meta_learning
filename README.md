@@ -1,4 +1,4 @@
-# Hebbian_meta_learning
+# Hebbian meta learning
 Hebbian learning on CartPole
 Based upon Meta-Learning through <b> Hebbian Plasticity in Random Networks</b> arXiv:2007.02686 <br/>
 Note, an empty plot will be made (2 seconds before) to signal that the gym will also render <br/>
