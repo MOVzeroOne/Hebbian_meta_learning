@@ -178,7 +178,7 @@ class enviroment():
     def __init__(self,env_name="CartPole-v1"):
         self.env = gym.make(env_name)
     
-    def run_episode(self,agent,amount_runs=1):
+    def run_episode(self,agent,amount_runs=2):
         for i in range(amount_runs):
             
             agent.reset_all_weights()
