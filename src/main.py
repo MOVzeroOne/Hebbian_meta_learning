@@ -31,8 +31,8 @@ class hebbian_layers():
 
     def update_weights(self,input,output):
         #hebbian update
-        presynaptic_act = np.tile(input,(self.weights.shape[0],1)) #matrix
-        postsynaptic_act = np.tile(output,(self.weights.shape[1])) #matrix
+        presynaptic_act = np.tile(input,(self.weights.shape[0],1))
+        postsynaptic_act = np.tile(output,(self.weights.shape[1])) 
         
         self.weights += self.mu*(self.A*presynaptic_act*postsynaptic_act+ self.B*presynaptic_act + self.C*postsynaptic_act + self.D)
         
@@ -188,6 +188,7 @@ class enviroment():
             
             while(True):
 
+
                 obs,reward,done,_ = self.env.step(agent.action(obs))
                 reward = min(reward,1.0)
                 
@@ -196,7 +197,7 @@ class enviroment():
                 
                 if(done):
                     break
-
+                
             agent.fitness += total_reward
         agent.fitness /= amount_runs
 
@@ -204,7 +205,7 @@ class enviroment():
         #render
         plt.ion()
         
-
+        
         if(agent.fitness == 500):
             agent.reset_all_weights()
 
@@ -212,7 +213,7 @@ class enviroment():
 
             fig,axis = plt.subplots(len(agent.get_all_weights()))
         
-
+            plt.pause(2)
             while(True):
                 for layer_num in range(len(agent.get_all_weights())):
                     axis[layer_num].imshow(agent.get_all_weights()[layer_num])
@@ -221,6 +222,7 @@ class enviroment():
 
                 obs,reward,done,_ = self.env.step(agent.action(obs))
                 if(done):
+                    self.env.close()
                     break
                 
             plt.close()
@@ -318,7 +320,7 @@ if __name__ == "__main__":
         plt.plot(x_plot,y_plot,c="red",label="average_fitness")
         plt.plot(x_plot,y_highest_plot,c="blue",label="highest_fitness")
 
- 
+        print("current average fitness: ", average_fitness)
         plt.pause(0.1)
 
     plt.show()
