@@ -312,7 +312,7 @@ if __name__ == "__main__":
     for i in range(EPOCHS):
         env.fitness_estimate(agent_list,i)
 
-        agent_list,average_fitness,highest_fitness = create_new_population(agent_list,noise=0.4,lr=1,input_size=input_size,output_size=output_size,hidden_size=hidden_size)
+        agent_list,average_fitness,highest_fitness = create_new_population(agent_list,noise=0.5,lr=1,input_size=input_size,output_size=output_size,hidden_size=hidden_size)
     
         x_plot.append(i)
         y_plot.append(average_fitness)
