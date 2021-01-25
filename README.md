@@ -4,4 +4,4 @@ Based upon <b> Meta-Learning through Hebbian Plasticity in Random Networks arXiv
 Note, an empty plot will be made (2 seconds before) to signal that the gym will also render. <br/>
 Here a different ES algorithm is used than in the paper. <br/>
 
-![](run_model.gif)
+![](runmodel.gif)
