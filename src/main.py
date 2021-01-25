@@ -211,20 +211,25 @@ class enviroment():
 
             obs = self.env.reset()
 
-            fig,axis = plt.subplots(len(agent.get_all_weights()))
-        
-            plt.pause(2)
+           
+            fig,axis = plt.subplots(len(agent.get_all_weights())+1)
             while(True):
                 for layer_num in range(len(agent.get_all_weights())):
-                    axis[layer_num].imshow(agent.get_all_weights()[layer_num])
-                plt.pause(0.1)
-                self.env.render()
-
+                    axis[layer_num+1].imshow(agent.get_all_weights()[layer_num])
+                
+                render = self.env.render(mode='rgb_array')
+                axis[0].imshow(render)
                 obs,reward,done,_ = self.env.step(agent.action(obs))
                 if(done):
                     self.env.close()
                     break
+                render_old = render
                 
+                plt.pause(0.01)
+                for index,ax in enumerate(axis):
+                    
+                    ax.cla()
+                axis[0].imshow(render_old)
             plt.close()
 
     def fitness_estimate(self,agent_list,epoch):
